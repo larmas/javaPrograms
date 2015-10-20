@@ -1,0 +1,8 @@
+Comando para compilar separando los archivos .class de los codigo fuente.
+
+javac -d bin -cp src src/Main.java
+
+En este caso en el directorio bin se guardan los archivos .class y en el directorio src se encuentran los archivos Main.java y las clases donde cada clase.java esta en un subdirectorios de src.
+Ej: src --> Main.java
+	src/Catalogo ---> Catalogo.java
+	src/Libro ----> Libro.java
