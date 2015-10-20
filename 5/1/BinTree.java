@@ -11,8 +11,8 @@ public class BinTree implements BinaryTreeBasic{
 		return root.getElem();
 	}
 
-	public void setRoot(Object item){
-		root.setElem(item);
+	public void setRoot(Object node){
+		root.setElem(node);              //nullpointer
 	}
 
 	public boolean isEmpty(){
