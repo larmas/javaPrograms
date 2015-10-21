@@ -41,7 +41,7 @@ public class BinTree implements BinaryTreeBasic{
 		}
 	}
 	//metodo search, busca un elemento en el arbol
-	public TreeNode searchTree(Comparable item){
+/*	public TreeNode searchTree(Comparable item){
 		TreeNode aux = new TreeNode();
 		aux = root;
 		if (item.compareTo(aux.getElem())==0){
@@ -55,5 +55,9 @@ public class BinTree implements BinaryTreeBasic{
 				return aux.searchTree(item);
 			}
 		}
+		return null;
+	}  */
+	public TreeNode searchBinTree(Comparable item){
+		return root.searchTree(item);
 	}
 }

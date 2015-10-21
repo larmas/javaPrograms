@@ -24,5 +24,7 @@ public class Main {
 		System.out.println(newTree.isEmpty());
 		newTree.makeEmpty();
 		System.out.println(newTree.isEmpty());
+		//prueba de search
+		newTree.searchBinTree(3);
 	}
 }
