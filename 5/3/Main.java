@@ -7,7 +7,7 @@ public class Main {
 		TreeNode n4 = new TreeNode(3);
 		//creo el arbol con n1 como raiz
 		BinTree newTree = new BinTree();
-		newTree.setRoot(n1);                    //nullpointer
+		newTree.setRoot(n1);                    
 		//seteo los hijos de la raiz(n1)
 		n1.setElemLeft(n2);
 		n1.setElemRight(n3);
