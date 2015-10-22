@@ -87,27 +87,23 @@ public class TreeNode{
 		// se imprime la raiz
 		System.out.print(element);
 	}
-	//metodo search, busca un elemento en el arbol
+	//metodo searchTree, busca un elemento en el arbol
 	public TreeNode searchTree(Comparable item){
 		TreeNode aux = new TreeNode();
 		aux = this;
-		
-		if (aux != null){
-			if (item.compareTo(aux.element)==0)
-				return aux; 
-			if (aux.right!= null){
-				if (item.compareTo(aux.element) > 0){
-					aux = aux.right;
-					return aux.searchTree(item);
-				}else{
-					if (aux.left != null){
-						aux = aux.left;
-						return aux.searchTree(item);	
-					}
+		if (item.compareTo(aux.element)==0){
+			return aux; 
+		}else{
+			if (aux.right!= null && item.compareTo(aux.element) > 0){
+				aux = aux.right;
+				return aux.searchTree(item);
+			}else{
+				if (aux.left != null){
+					aux = aux.left;
+					return aux.searchTree(item);	
 				}
-			}	
-		}else{	
-			return null;
-		}
+			}
+		}	
+		return null;
 	}
 }

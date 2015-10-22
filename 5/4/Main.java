@@ -22,9 +22,9 @@ public class Main {
 		System.out.println();
 		//prueba de vacio y vaciar
 		System.out.println(newTree.isEmpty());
-		newTree.makeEmpty();
-		System.out.println(newTree.isEmpty());
+		//newTree.makeEmpty();
+		//System.out.println(newTree.isEmpty());
 		//prueba de search
-		newTree.searchBinTree(3);
+		System.out.println(newTree.searchBinTree(3));
 	}
 }

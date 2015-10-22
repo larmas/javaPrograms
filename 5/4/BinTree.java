@@ -40,24 +40,12 @@ public class BinTree implements BinaryTreeBasic{
 			root.printInOrderTreeNode();
 		}
 	}
-	//metodo search, busca un elemento en el arbol
-/*	public TreeNode searchTree(Comparable item){
-		TreeNode aux = new TreeNode();
-		aux = root;
-		if (item.compareTo(aux.getElem())==0){
-			return aux; 
-		}else{
-			if (item.compareTo(aux.getElem()) > 0){
-				aux = aux.getNodeRight();
-				return aux.searchTree(item);
-			}else{
-				aux = aux.getNodeLeft();
-				return aux.searchTree(item);
-			}
-		}
-		return null;
-	}  */
+	//metodo searchBinTree, busca un elemento en el arbol
 	public TreeNode searchBinTree(Comparable item){
-		return root.searchTree(item);
+		if (root!=null){
+			return root.searchTree(item);
+		}else{
+			return null;
+		}
 	}
 }
