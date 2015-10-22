@@ -48,4 +48,15 @@ public class BinTree implements BinaryTreeBasic{
 			return null;
 		}
 	}
+	//metodo insertBinTree, inserta un elemento en el arbol si es que este no existe
+	public void insertBinTree(Comparable item){
+		if (root!=null){
+			root.insertTree(item);
+		}else{
+			BinTree newTree = new BinTree();
+			TreeNode node = new TreeNode(item);
+			newTree.setRoot(node);
+		}
+		
+	}
 }

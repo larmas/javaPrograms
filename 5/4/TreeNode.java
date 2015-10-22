@@ -91,19 +91,49 @@ public class TreeNode{
 	public TreeNode searchTree(Comparable item){
 		TreeNode aux = new TreeNode();
 		aux = this;
+		//si el elemento es igual a la raiz
 		if (item.compareTo(aux.element)==0){
 			return aux; 
 		}else{
+			//si el elemento es mayor que el nodo busco en la rama derecha
 			if (aux.right!= null && item.compareTo(aux.element) > 0){
 				aux = aux.right;
 				return aux.searchTree(item);
-			}else{
-				if (aux.left != null){
+			}else{ 
+				//si el elemento es menor que el nodo busco en la rama izquierda
+				if (aux.left != null && item.compareTo(aux.element) < 0){
 					aux = aux.left;
 					return aux.searchTree(item);	
 				}
 			}
 		}	
 		return null;
-	}
+	}//end of method
+	//metodo insertTree, inserta un elemento en el arbol, si es que este no existe ya
+	public void insertTree(Comparable item){
+		TreeNode aux = new TreeNode();
+		aux = this;
+		//recorro el arbol hasta el final chekeando que el elemento no este
+		if(item!=aux.element){
+			if (aux.right!= null && item.compareTo(aux.element) > 0){
+				aux = aux.right;
+				aux.searchTree(item);
+			}else{
+				if (aux.left != null && item.compareTo(aux.element) < 0){
+					aux = aux.left;
+					aux.searchTree(item);
+				}
+			}
+		}//end of if
+		if (aux.element!=item){
+			if (item.compareTo(aux.element)>0){
+				TreeNode newNode = new TreeNode(item);
+				aux.setElemRight(newNode);
+			}
+			if (item.compareTo(aux.element)<0){
+				TreeNode newNode = new TreeNode(item);
+				aux.setElemLeft(newNode);
+			}
+		}//end of first if
+	}//end of method
 }
