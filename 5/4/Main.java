@@ -21,7 +21,8 @@ public class Main {
 		newTree.printInOrder();
 		System.out.println();
 		//prueba de search
-		//System.out.println(newTree.searchBinTree(3));
+		System.out.println(newTree.searchBinTree(0));
+		System.out.println(newTree.searchBinTree(3));
 		//prueba insert
 		newTree.insertBinTree(3);
 		newTree.insertBinTree(5);

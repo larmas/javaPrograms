@@ -117,14 +117,14 @@ public class TreeNode{
 		if(item!=aux.element){
 			if (aux.right!= null && item.compareTo(aux.element) > 0){
 				aux = aux.right;
-				aux.searchTree(item);
+				aux.insertTree(item);
 			}else{
 				if (aux.left != null && item.compareTo(aux.element) < 0){
 					aux = aux.left;
-					aux.searchTree(item);
+					aux.insertTree(item);
 				}
 			}
-		}//end of if
+		}//end of if 
 		if (aux.element!=item){
 			if (item.compareTo(aux.element)>0){
 				TreeNode newNode = new TreeNode(item);
