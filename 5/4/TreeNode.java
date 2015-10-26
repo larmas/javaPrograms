@@ -33,12 +33,12 @@ public class TreeNode{
 		this.element = item;
 	} 
 	//setea el elemento del hijo izquierdo
-	public void setElemLeft(Object item){
-		this.left = (TreeNode)item;
+	public void setElemLeft(TreeNode node){
+		this.left = node;
 	}
 	//setea el elemento del hijo derecho
-	public void setElemRight(Object item){
-		this.right = (TreeNode)item;
+	public void setElemRight(TreeNode node){
+		this.right = node;
 	}
 	//devuelve el hijo izquierdo
 	public TreeNode getNodeLeft(){
@@ -110,30 +110,24 @@ public class TreeNode{
 		return null;
 	}//end of method
 	//metodo insertTree, inserta un elemento en el arbol, si es que este no existe ya
-	public void insertTree(Comparable item){
-		TreeNode aux = new TreeNode();
-		aux = this;
+	public TreeNode insertTree(Comparable item, TreeNode aux){
 		//recorro el arbol hasta el final chekeando que el elemento no este
-		if(item!=aux.element){
-			if (aux.right!= null && item.compareTo(aux.element) > 0){
-				aux = aux.right;
-				aux.insertTree(item);
+		if (aux ==null){
+			return (new TreeNode(item));
+		}else{
+			if(item.compareTo(aux.element)==0){
+				return aux;
 			}else{
-				if (aux.left != null && item.compareTo(aux.element) < 0){
-					aux = aux.left;
-					aux.insertTree(item);
+				if (item.compareTo(aux.element) > 0){
+					aux.right = insertTree(item,aux.right);
+					
+				}else{
+					if (item.compareTo(aux.element) < 0){
+						aux.left = insertTree(item,aux.left);
+					}
 				}
-			}
-		}//end of if 
-		if (aux.element!=item){
-			if (item.compareTo(aux.element)>0){
-				TreeNode newNode = new TreeNode(item);
-				aux.setElemRight(newNode);
-			}
-			if (item.compareTo(aux.element)<0){
-				TreeNode newNode = new TreeNode(item);
-				aux.setElemLeft(newNode);
-			}
-		}//end of first if
+			} 
+		}
+		return aux;
 	}//end of method
 }

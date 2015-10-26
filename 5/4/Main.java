@@ -24,8 +24,8 @@ public class Main {
 		System.out.println(newTree.searchBinTree(0));
 		System.out.println(newTree.searchBinTree(3));
 		//prueba insert
-		newTree.insertBinTree(3);
-		newTree.insertBinTree(5);
+		newTree.setRoot(newTree.insertBinTree(3));
+		newTree.setRoot(newTree.insertBinTree(5));
 		newTree.printPreOrder();
 	}
 }
