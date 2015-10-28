@@ -5,35 +5,63 @@ public class Heap{
 	/*atributo privado que contiene la longitud del array*/
 	private int lenght;
 
-	//constructor de la clase
+	/*constructor de la clase*/
 	public Heap(){
 		lenght=0;
 		array = new Comparable[DEFAULT_MAX];
-	}//end of constructor
+	}/*end of constructor*/
 
-	//metodo que intercambia dos valores en un arreglo
-	private void swap(Comparable[] array, int current, int p){
+	/*metodo que intercambia dos valores en un arreglo*/
+	public void swap(int current, int p){
 		Comparable aux = array[current];
 		array[current] = array[p];
 		array[p] = aux;
-	}//end of method
+	}/*end of method*/
 
-	//devuelve el padre de un elemento
+	/*devuelve el padre de un elemento*/
 	public int parent(int index){
-		return (int)(index-1)/2;
-	}//end of method
+		return (index-1)/2;
+	}/*end of method*/
 
-	//inserta un elemento en el heap y lo ordena
+	/*metodo isEmpty devuelve true si el heap es vacio*/
+	public boolean isEmpty(){
+		return lenght==0;
+	}/*end of method
+
+	/*inserta un elemento en el heap y lo ordena*/
 	public void insertHeap(Comparable item){
 		array[lenght]=item;
 		int current = lenght;
-		int p = parent(lenght);
 
-		while (p>0 && array[current].compareTo(array[p])>0){
-			swap(array,current,p);
-			p = parent(current);
+		while (parent(current)>=0 && array[current].compareTo(array[parent(current)])>0){
+			swap(current,parent(current));
+			current = parent(current);
 		}
 		lenght++;
-	}//end of method
-	
-}//end of class
+	}/*end of method*/
+
+	/*metodo deleteMax elimina el mayor elemento del heap(cabeza) y ordena*/
+	public Comparable deleteMax(){
+		swap(0,lenght-1);
+		Comparable deleted = array[lenght-1];
+		lenght--;
+		int current = lenght-1;
+
+		while (parent(current)>=0 && array[current].compareTo(array[parent(current)])>0){
+			swap(current,parent(current));
+			current = parent(current);
+		}
+		return deleted;
+	}
+
+	/*metodo toString imprime los elementos del arreglo*/
+	public String toString(){
+		int index = 0;
+		String result = "";
+		while (index<this.lenght){
+			result +=" "+ this.array[index];
+			index++;
+		}
+		return result;
+	}/*end of method*/
+}/*end of class*/
