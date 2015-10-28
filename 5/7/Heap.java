@@ -19,9 +19,19 @@ public class Heap{
 	}/*end of method*/
 
 	/*devuelve el padre de un elemento*/
-	public int parent(int index){
-		return (index-1)/2;
+	public int parent(int indexHijo){
+		return (indexHijo-1)/2;
 	}/*end of method*/
+
+	/*devuelve el indice del hijo derecho*/
+	public int right(int indexParent){
+		return 2*(indexParent+1);
+	}/*end of method*/
+
+	/*devuelve el indice del hijo izquierdo*/
+	public int left(int indexParent){
+		return (2*indexParent)+1;
+	}
 
 	/*metodo isEmpty devuelve true si el heap es vacio*/
 	public boolean isEmpty(){
