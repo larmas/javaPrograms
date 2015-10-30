@@ -23,14 +23,12 @@ public class Heap{
 		return ((indexHijo-1)/2);
 	}/*end of method*/
 
-	/*devuelve el indice del hijo derecho*/
-	public int right(int indexParent){
-		return (2*(indexParent+1));
-	}/*end of method*/
-
-	/*devuelve el indice del hijo izquierdo*/
-	public int left(int indexParent){
-		return ((2*indexParent)+1);
+	/*devuelve el indice del maximo hijo*/
+	public int maxElem(int indexLeft, int indexRight){
+		if (array[indexLeft].compareTo(array[indexRight])>0){
+			return indexLeft;
+		}
+		return indexRight;
 	}
 
 	/*metodo isEmpty devuelve true si el heap es vacio*/
@@ -41,17 +39,29 @@ public class Heap{
 	/*inserta un elemento en el heap y lo ordena*/
 	/*metodo sort ordena el heap*/
 	public void sort (int index){
-		int indexMax = this.left(index);
-		int indexRight = this.right(index);
-		/*busco el maximo elemento de los hermanos*/
-		if (array[indexMax].compareTo(array[indexRight])<0){
-			indexMax = indexRight;
-		}
-		
-		if ((indexMax<=lenght) && array[index].compareTo(array[indexMax])>0){
-			this.swap(index,indexMax);
-			this.sort(indexMax);
-		}
+		int parent = index;
+		while (2*parent+1<lenght || 2*(parent+1)<lenght){
+			int current = parent;
+			int hd = 0;
+			int hi = 0;
+			if (2*parent+1<lenght){
+				hi = (2*parent+1);
+			}
+			if (2*(parent+1)<lenght){
+				hd = (2*(parent+1));
+			}
+			if (hd == 0){
+				parent = hi;
+			}else{
+				parent = maxElem(hi,hd);
+			}
+			/*current trae el valor del padre y parent pasa a ser el maximo de los hijos*/
+			if (array[current].compareTo(array[parent])<0){
+				Comparable aux = array[current];
+				array[current] = array[parent];
+				array[parent] = aux;
+			}
+		}/*end of while*/
 	}
 	public void insertHeap(Comparable item){
 		array[lenght]=item;
