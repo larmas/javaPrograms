@@ -11,8 +11,13 @@ public class TestHeap {
 		n1.insertHeap(56);
 		n1.insertHeap(76);
 		System.out.println(n1.toString());
-
+		System.out.println(n1.repOk());
 		n1.deleteMax();
 		System.out.println(n1.toString());
+		System.out.println(n1.repOk());
+		n1.deleteMax();
+		n1.deleteMax();
+		System.out.println(n1.toString());
+		System.out.println(n1.repOk());
 	}//end of method test
 }//end of class test

@@ -11,14 +11,14 @@ public class Heap{
 		array = new Comparable[DEFAULT_MAX];
 	}/*end of constructor*/
 
-	/*metodo que intercambia dos valores en un arreglo*/
+	/*metodo swap intercambia dos valores en un arreglo*/
 	public void swap(int x, int y){
 		Comparable aux = array[x];
 		array[x] = array[y];
 		array[y] = aux;
 	}/*end of method*/
 
-	/*devuelve el padre de un elemento*/
+	/*metodo parent devuelve el padre de un elemento*/
 	public int parent(int indexHijo){
 		return ((indexHijo-1)/2);
 	}/*end of method*/
@@ -29,14 +29,18 @@ public class Heap{
 			return indexLeft;
 		}
 		return indexRight;
-	}
+	}/*end of method*/
 
 	/*metodo isEmpty devuelve true si el heap es vacio*/
 	public boolean isEmpty(){
 		return lenght==0;
-	}/*end of method
+	}/*end of method*/
 
-	/*inserta un elemento en el heap y lo ordena*/
+	/*metodo makeEmpty vacia el heap*/
+	public void makeEmpty(){
+		lenght = 0;
+ 	}/*end of method*/
+
 	/*metodo sort ordena el heap*/
 	public void sort (int index){
 		int parent = index;
@@ -63,6 +67,8 @@ public class Heap{
 			}
 		}/*end of while*/
 	}
+	
+	/*metodo insertHeap inserta un elemento en el heap y lo ordena*/
 	public void insertHeap(Comparable item){
 		array[lenght]=item;
 		int current = lenght;
@@ -77,12 +83,16 @@ public class Heap{
 
 	/*metodo deleteMax elimina el mayor elemento del heap(cabeza) y ordena*/
 	public Comparable deleteMax(){
-		Comparable deleted = array[lenght-1];
-		swap(0,lenght-1);
-		lenght--;
-		this.sort(0);
-		
-		return deleted;
+		if (!isEmpty()){
+			swap(0,lenght-1);
+			Comparable deleted = array[lenght-1];
+			array[lenght-1] = null;
+			lenght--;
+			this.sort(0);
+			return deleted;
+		}else{
+			return null;
+		}
 	}
 
 	/*metodo toString imprime los elementos del arreglo*/
@@ -95,4 +105,21 @@ public class Heap{
 		}
 		return result;
 	}/*end of method*/
+
+	/*metodo repOk verifica que se cumplan las propiedades de heap despues de insertar o eliminar*/
+	public boolean repOk(){
+		boolean flag = true;
+		for (int index = 0; index < lenght-1; index++ ) {
+			if (array[2*index+1] != null){
+				flag = flag && (array[2*index+1].compareTo(array[index])<0);
+			}
+			if (array[2*(index+1)] != null){
+				flag = flag && (array[2*(index+1)].compareTo(array[index])<0);
+			}
+			if (array[2*index+1] == null){
+				flag = flag && (array[2*index+1] == null);
+			}
+		}
+		return flag;
+	}
 }/*end of class*/
