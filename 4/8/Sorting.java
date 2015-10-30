@@ -68,27 +68,33 @@ public class Sorting{
 	// merge: mezcla dos partes consecutivas de array
 	// pre: 0 <= begin, mid, end <= array.lenght
 	private static void merge(Comparable[] array, int begin, int mid, int end){
-		Comparable[] aux = new Comparable[end];
-		for(int index=begin; index<=end; index++){
-			aux[index]=array[index];
-		}
+		Comparable[] aux = new Comparable[end+1];
+		
 		int i = begin;
 		int j = mid+1;
 		int k = begin;
 		while(i<=mid && j<=end){
-			if (!(aux[i].compareTo(aux[j])>0)){
-				array[k]= aux[i];
+			if (array[i].compareTo(array[j])<=0){
+				aux[k]= array[i];
 				i++;
 			}else{
-				array[k]=aux[j];
+				aux[k]=array[j];
 				j++;
 			}/*end if*/
 			k++;
 		}/*end of while*/
 		while(i<=mid){
-			array[k]=aux[i];
+			aux[k]=array[i];
 			k++;
 			i++;
+		}
+		while(j<=end){
+			aux[k]=array[j];
+			k++;
+			j++;
+		}
+		for (int index=begin; index<=end; index++){
+			array[index]=aux[index];
 		}
 	}
 	

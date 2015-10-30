@@ -23,10 +23,19 @@ public class ArrayGenerator{
 	/*pre: true*/
 	/*post: genera el array*/
 	public void generateNewArray(){
-		for (int j=0; j < lenght; j++){
+		//for (int j=0; j < lenght; j++){
 			//int n = generator.nextInt();
-			array[j] = new Integer(generator.nextInt());	
-		} 
+			array[0] = 4;	
+			array[1]= 3;	
+			array[2] = 6;	
+			array[3] = 15;	
+			array[4] = 8;	
+			array[5] = 1;	
+			array[6] = 23;	
+			array[7] = 12;	
+			array[8] = 5;	
+			array[9] = 9;	
+		//} 
 	};
 	/* getArray: retorna el arreglo */
 	/*pre: true*/
